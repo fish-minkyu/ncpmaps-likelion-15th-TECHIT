@@ -1,0 +1,8 @@
+ncp:
+  api:
+    client-id: <client-id>
+    client-secret: <client-secret>
+
+    api-access: <access-key>
+    api-secret: <secret-key>
+
