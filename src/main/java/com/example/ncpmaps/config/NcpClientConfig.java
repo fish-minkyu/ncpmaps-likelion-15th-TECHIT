@@ -1,5 +1,6 @@
 package com.example.ncpmaps.config;
 
+import com.example.ncpmaps.service.NcpGeolocationService;
 import com.example.ncpmaps.service.NcpMapApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -60,6 +61,7 @@ public class NcpClientConfig {
     @Bean
     public RestClient ncpGeolocationClient() {
         return RestClient.builder()
+                .baseUrl("https://geolocation.apigw.ntruss.com/geolocation/v2/geoLocation")
                 .requestInitializer(request -> {
                     HttpHeaders requestHeaders = request.getHeaders();
 
@@ -77,6 +79,13 @@ public class NcpClientConfig {
                     ));
                 })
                 .build();
+    }
+
+    @Bean
+    public NcpGeolocationService geolocationService() {
+        return HttpServiceProxyFactory.builderFor(RestClientAdapter.create(ncpGeolocationClient()))
+                .build()
+                .createClient(NcpGeolocationService.class);
     }
 
     // Signature를 만드는 메서드
