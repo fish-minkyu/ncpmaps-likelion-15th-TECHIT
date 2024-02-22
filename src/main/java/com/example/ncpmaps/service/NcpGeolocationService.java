@@ -8,5 +8,8 @@ import java.util.Map;
 
 public interface NcpGeolocationService {
     @GetExchange
-    GeoLocationNcpResponse geoLocation(@RequestParam Map<String, Object> params);
+    GeoLocationNcpResponse geoLocation(
+            @RequestParam
+            Map<String, Object> params
+    );
 }
