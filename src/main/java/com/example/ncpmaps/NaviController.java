@@ -58,6 +58,6 @@ public class NaviController {
             @RequestBody
             NaviWithIpsDto dto
     ) {
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
+        return service.withIpAddress(dto);
     }
 }
