@@ -39,7 +39,7 @@ public class NaviController {
             @RequestBody
             PointDto point
     ) {
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
+        return service.getAddress(point);
     }
 
     // 하나의 좌표와 주소를 입력받아, 좌표에서
