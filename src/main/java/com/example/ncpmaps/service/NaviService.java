@@ -2,8 +2,10 @@ package com.example.ncpmaps.service;
 
 import com.example.ncpmaps.dto.NaviRouteDto;
 import com.example.ncpmaps.dto.NaviWithPointsDto;
+import com.example.ncpmaps.dto.NaviWithQueryDto;
 import com.example.ncpmaps.dto.PointDto;
 import com.example.ncpmaps.dto.direction.DirectionNcpResponse;
+import com.example.ncpmaps.dto.geocoding.GeoNcpResponse;
 import com.example.ncpmaps.dto.rgeocoding.RGeoNcpResponse;
 import com.example.ncpmaps.dto.rgeocoding.RGeoRegion;
 import com.example.ncpmaps.dto.rgeocoding.RGeoResponseDto;
@@ -55,6 +57,25 @@ public class NaviService {
                 region.getArea3().getName() + " " +
                 region.getArea4().getName();
         return new RGeoResponseDto(address.trim());
+    }
+
+    public NaviRouteDto startQuery(NaviWithQueryDto dto) {
+        // 주소의 좌표부터 찾기
+        Map<String, Object> params = new HashMap<>();
+        params.put("query", dto.getQuery());
+        params.put("coordinate", dto.getStart().toQueryValue());
+        params.put("page", 1);
+        params.put("count", 1);
+        GeoNcpResponse response = mapApiService.geocode(params);
+        log.info(response.toString());
+        Double lat = Double.valueOf(response.getAddresses().get(0).getY());
+        Double lng = Double.valueOf(response.getAddresses().get(0).getX());
+        PointDto goal = new PointDto(lat, lng);
+        // 경로를 찾아 반환하기
+        return this.twoPointRoute(new NaviWithPointsDto(
+                dto.getStart(),
+                goal
+        ));
     }
 }
 
