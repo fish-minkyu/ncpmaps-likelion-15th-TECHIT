@@ -7,9 +7,10 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
+// GeoLocation 전체 대답
 public class GeoNcpResponse {
-    private String status;
-    private GeoMeta meta;
-    private List<GeoAddress> addresses;
-    private String errorMessage;
+  private String status;
+  private GeoMeta meta;
+  private List<GeoAddress> addresses;
+  private String errorMessage;
 }

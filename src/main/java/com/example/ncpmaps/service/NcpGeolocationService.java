@@ -7,9 +7,9 @@ import org.springframework.web.service.annotation.GetExchange;
 import java.util.Map;
 
 public interface NcpGeolocationService {
-    @GetExchange
-    GeoLocationNcpResponse geoLocation(
-            @RequestParam
-            Map<String, Object> params
-    );
+  @GetExchange
+  GeoLocationNcpResponse geoLocation(
+    @RequestParam
+    Map<String, Object> params
+  );
 }

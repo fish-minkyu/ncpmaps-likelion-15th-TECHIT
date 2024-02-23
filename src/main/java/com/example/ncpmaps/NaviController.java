@@ -22,42 +22,46 @@ import java.util.Map;
 @RequestMapping("navigate")
 @RequiredArgsConstructor
 public class NaviController {
-    private final NaviService service;
+  private final NaviService service;
 
-    // 두 좌표를 받아 이동경로를 반환하는 메서드
-    @PostMapping("points")
-    public NaviRouteDto withPoints(
-            @RequestBody
-            NaviWithPointsDto dto
-    ) {
-        return service.twoPointRoute(dto);
-    }
+  // 두 점 경로 구하기
+  // 두 좌표를 받아 이동경로를 반환하는 메서드
+  @PostMapping("points")
+  public NaviRouteDto withPoints(
+      @RequestBody
+      NaviWithPointsDto dto
+  ) {
+    return service.twoPointRoute(dto);
+  }
 
-    // 하나의 좌표를 입력받아, 주소를 반환하는 메서드
-    @PostMapping("get-address")
-    public RGeoResponseDto getAddress(
-            @RequestBody
-            PointDto point
-    ) {
-        return service.getAddress(point);
-    }
+  // 중심점 주소
+  // 하나의 좌표를 입력받아, 주소를 반환하는 메서드
+  @PostMapping("get-address")
+  public RGeoResponseDto getAddress(
+      @RequestBody
+      PointDto point
+  ) {
+    return service.getAddress(point);
+  }
 
-    // 하나의 좌표와 주소를 입력받아, 좌표에서
-    // 주소검색 결과 위치로의 이동경로를 반환하는 메서드
-    @PostMapping("start-query")
-    public NaviRouteDto withQuery(
-            @RequestBody
-            NaviWithQueryDto dto
-    ) {
-        return service.startQuery(dto);
-    }
+  // 중심점에서 주소까지 (가장 근접한 결과로)
+  // 하나의 좌표와 주소를 입력받아, 좌표에서
+  // 주소검색 결과 위치로의 이동경로를 반환하는 메서드
+  @PostMapping("start-query")
+  public NaviRouteDto withQuery(
+    @RequestBody
+    NaviWithQueryDto dto
+  ) {
+    return service.startQuery(dto);
+  }
 
-    // 두 IP 주소를 입력받아 이동경로를 반환하는 메서드
-    @PostMapping("ips")
-    public NaviRouteDto withIpAddresses(
-            @RequestBody
-            NaviWithIpsDto dto
-    ) {
-        return service.withIpAddress(dto);
-    }
+  // 경로 구하기
+  // 두 IP 주소를 입력받아 이동경로를 반환하는 메서드
+  @PostMapping("ips")
+  public NaviRouteDto withIpAddresses(
+    @RequestBody
+    NaviWithIpsDto dto
+  ) {
+    return service.withIpAddress(dto);
+  }
 }

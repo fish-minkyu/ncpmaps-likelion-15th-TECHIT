@@ -7,8 +7,8 @@ import java.util.Map;
 
 @Data
 public class DirectionRoute {
-    private Map<String, Object> summary;
-    private List<List<Double>> path;
-    private List<Object> section;
-    private List<Object> guide;
+  private Map<String, Object> summary;
+  private List<List<Double>> path;
+  private List<Object> section;
+  private List<Object> guide;
 }

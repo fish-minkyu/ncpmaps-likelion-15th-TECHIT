@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class NaviWithQueryDto {
-    private PointDto start;
-    private String query;
+  private PointDto start;
+  private String query;
 }

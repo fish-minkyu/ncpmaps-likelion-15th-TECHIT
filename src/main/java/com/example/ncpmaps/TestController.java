@@ -14,17 +14,17 @@ import java.util.Map;
 @RequestMapping("test")
 @RequiredArgsConstructor
 public class TestController {
-    private final NcpGeolocationService geolocationService;
+  private final NcpGeolocationService geolocationService;
 
-    @GetMapping("geolocation")
-    public GeoLocationNcpResponse geoLocation(
-            @RequestParam("ip")
-            String ip
-    ) {
-        return geolocationService.geoLocation(Map.of(
-                "ip", ip,
-                "responseFormatType", "json",
-                "ext", "t"
-        ));
-    }
+  @GetMapping("geolocation")
+  public GeoLocationNcpResponse geoLocation(
+      @RequestParam("ip")
+      String ip
+  ) {
+      return geolocationService.geoLocation(Map.of(
+        "ip", ip,
+        "responseFormatType", "json",
+        "ext", "t"
+      ));
+  }
 }

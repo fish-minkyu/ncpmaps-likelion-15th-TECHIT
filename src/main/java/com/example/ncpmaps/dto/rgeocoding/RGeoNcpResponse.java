@@ -7,6 +7,6 @@ import java.util.Map;
 
 @Data
 public class RGeoNcpResponse {
-    private Map<String, String> status;
-    private List<RGeoResult> results;
+  private Map<String, String> status;
+  private List<RGeoResult> results;
 }

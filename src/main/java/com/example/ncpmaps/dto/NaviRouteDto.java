@@ -9,5 +9,5 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class NaviRouteDto {
-    private List<PointDto> path;
+  private List<PointDto> path;
 }
