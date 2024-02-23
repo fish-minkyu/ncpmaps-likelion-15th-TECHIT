@@ -23,6 +23,7 @@ public class TestController {
   ) {
       return geolocationService.geoLocation(Map.of(
         "ip", ip,
+        // Geolocation은 응답 기본형이 xml이므로 json을 넣어준다.
         "responseFormatType", "json",
         "ext", "t"
       ));

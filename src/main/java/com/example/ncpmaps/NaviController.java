@@ -19,14 +19,14 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("navigate")
+@RequestMapping("/navigate")
 @RequiredArgsConstructor
 public class NaviController {
   private final NaviService service;
 
   // 두 점 경로 구하기
   // 두 좌표를 받아 이동경로를 반환하는 메서드
-  @PostMapping("points")
+  @PostMapping("/points")
   public NaviRouteDto withPoints(
       @RequestBody
       NaviWithPointsDto dto
@@ -36,7 +36,7 @@ public class NaviController {
 
   // 중심점 주소
   // 하나의 좌표를 입력받아, 주소를 반환하는 메서드
-  @PostMapping("get-address")
+  @PostMapping("/get-address")
   public RGeoResponseDto getAddress(
       @RequestBody
       PointDto point
@@ -47,7 +47,7 @@ public class NaviController {
   // 중심점에서 주소까지 (가장 근접한 결과로)
   // 하나의 좌표와 주소를 입력받아, 좌표에서
   // 주소검색 결과 위치로의 이동경로를 반환하는 메서드
-  @PostMapping("start-query")
+  @PostMapping("/start-query")
   public NaviRouteDto withQuery(
     @RequestBody
     NaviWithQueryDto dto
@@ -57,7 +57,7 @@ public class NaviController {
 
   // 경로 구하기
   // 두 IP 주소를 입력받아 이동경로를 반환하는 메서드
-  @PostMapping("ips")
+  @PostMapping("/ips")
   public NaviRouteDto withIpAddresses(
     @RequestBody
     NaviWithIpsDto dto
