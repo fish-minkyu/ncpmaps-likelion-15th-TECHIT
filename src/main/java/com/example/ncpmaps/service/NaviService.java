@@ -25,11 +25,14 @@ public class NaviService {
   private final NcpMapApiService mapApiService;
   private final NcpGeolocationService geolocationService;
 
+  // 두 점 경로 구하기
+  // 2개의 점이 주어졌을 때, 경로를 구하는 메서드
   public NaviRouteDto twoPointRoute(NaviWithPointsDto dto) {
     Map<String, Object> params = new HashMap<>();
     params.put("start", dto.getStart().toQueryValue());
     params.put("goal", dto.getGoal().toQueryValue());
     DirectionNcpResponse response = mapApiService.directions5(params);
+    // 경로를 담기 위한 리스트 생성
     List<PointDto> path = new ArrayList<>();
     response.getRoute()
             .get("traoptimal")
@@ -40,6 +43,8 @@ public class NaviService {
     return new NaviRouteDto(path);
   }
 
+  // 중심점 주소
+  // 하나의 좌표를 입력받아, 주소를 반환하는 메서드
   public RGeoResponseDto getAddress(PointDto pointDto) {
     Map<String, Object> params = new HashMap<>();
     params.put("coords", pointDto.toQueryValue());
