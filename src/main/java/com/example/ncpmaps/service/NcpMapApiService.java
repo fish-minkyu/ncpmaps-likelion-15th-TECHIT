@@ -24,6 +24,7 @@ public interface NcpMapApiService {
           Map<String, Object> params
   );
 
+  // reverse geocode
   @GetExchange("/map-reversegeocode/v2/gc")
   RGeoNcpResponse reverseGeocode(
           @RequestParam

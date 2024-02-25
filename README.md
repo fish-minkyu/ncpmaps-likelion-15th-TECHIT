@@ -14,6 +14,13 @@
 
 - GeoLocation
 
+Http Interface 방법으로 Http Client를 구현했다.  
+Http Interface 특징 상, 사용할 외부 API에게 어떻게 요청을 보낼지 정의한 인터페이스와  
+요청을 보낼 객체(RestTemplage, WebClient, RestClient)가 필요하다.
+
+해당 프로젝트는 `Restclient`와 `Http Interface`를 연결하였다.
+
+
 ## 스팩
 
 - Spring Boot 3.2.2
@@ -161,7 +168,8 @@ private static final String NCP_APIGW_KEY_ID = "X-NCP-APIGW-API-KEY-ID";
   }
 ```
 
-[NcpMapApiService](/src/main/java/com/example/ncpmaps/service/NcpMapApiService.java)
+[NcpMapApiService](/src/main/java/com/example/ncpmaps/service/NcpMapApiService.java)  
+=> AI NAVER API에게 어떻게 요청을 보낼지 정의한 인터페이스다.
 ```java
 // HTTP 요청을 보내는 방법
 public interface NcpMapApiService {
@@ -179,6 +187,7 @@ public interface NcpMapApiService {
           Map<String, Object> params
   );
 
+  // reverse geocode
   @GetExchange("/map-reversegeocode/v2/gc")
   RGeoNcpResponse reverseGeocode(
           @RequestParam
@@ -187,7 +196,8 @@ public interface NcpMapApiService {
 }
 ```
 
-[NcpGeolocationService](/src/main/java/com/example/ncpmaps/service/NcpGeolocationService.java)
+[NcpGeolocationService](/src/main/java/com/example/ncpmaps/service/NcpGeolocationService.java)  
+=> GeoLocation API에게 어떻게 요청을 보낼지 정의한 인터페이스다.
 ```java
 public interface NcpGeolocationService {
   @GetExchange
